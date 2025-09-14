@@ -25,7 +25,6 @@ model-viewer {
   
   /* Blur and semi-transparent overlay */
   backdrop-filter: blur(8px);
-  background-color: rgba(0, 0, 0, 0.3);
 
   /* Center the text */
   display: flex;
@@ -39,4 +38,5 @@ model-viewer {
   font-weight: bold;
   text-align: center;
 }
+
 
