@@ -14,8 +14,10 @@ body, html {
 model-viewer {
   width: 100%;
   height: 100%;
+  display: block;
 }
 
+/* Overlay covering the model */
 #overlay {
   position: absolute;
   top: 0;
@@ -23,20 +25,27 @@ model-viewer {
   width: 100%;
   height: 100%;
   
-  /* Blur and semi-transparent overlay */
+  /* Transparent background so blur works */
+  background-color: rgba(255,255,255,0); /* fully transparent */
+
+  /* Apply blur to the backdrop (model-viewer behind it) */
   backdrop-filter: blur(8px);
 
-  /* Center the text */
+  /* Center text */
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 10;
 }
 
 #overlay-text {
   color: white;
-  font-size: 2rem;
+  font-size: 3rem;
   font-weight: bold;
   text-align: center;
+  text-shadow: 0 0 10px rgba(0,0,0,0.7); /* optional for readability */
 }
+
+
 
 
