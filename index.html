@@ -1,15 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Twitch 3D Viewer</title>
-  <link rel="stylesheet" href="style.css">
-  <!-- Model Viewer library -->
-  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-</head>
 <body>
  <div id="panel-container">
-  <!-- The 3D model -->
   <model-viewer 
       src="model/moss_sword.glb"
       alt="3D Model"
@@ -20,12 +10,28 @@
       style="width: 100%; height: 100%; background-color: #18181b;">
   </model-viewer>
     
-  <!-- Overlay -->
   <div id="overlay">
     <div id="overlay-text">Follow to unlock</div>
   </div>
  </div>
+
+ <!-- JS for overlay -->
+ <script>
+   // Twitch extension helper is available when panel is loaded on Twitch
+   if (window.Twitch && window.Twitch.ext) {
+     Twitch.ext.onAuthorized((auth) => {
+       // Replace this with your backend call to check if the user is a follower
+       userIsFollower().then(isFollower => {
+         if (isFollower) {
+           document.getElementById('overlay').style.display = 'none';
+         }
+       });
+     });
+   }
+
+   // Demo function for testing
+   async function userIsFollower() {
+     return false; // change to true to test hiding overlay
+   }
+ </script>
 </body>
-</html>
-
-
