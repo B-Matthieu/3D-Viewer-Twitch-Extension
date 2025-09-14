@@ -8,6 +8,7 @@
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 </head>
 <body>
+ <div id="panel-container">
   <!-- The 3D model -->
   <model-viewer 
       src="model/moss_sword.glb"
@@ -15,9 +16,16 @@
       auto-rotate
       camera-controls
       min-camera-orbit="1.5m 0deg 0deg"
-      max-camera-orbit="10m 360deg 90deg"
+      max-camera-orbit="13m 360deg 90deg"
       style="width: 100%; height: 100%; background-color: #18181b;">
   </model-viewer>
+    
+  <!-- Overlay -->
+  <div id="overlay">
+    <div id="overlay-text">Follow to unlock</div>
+  </div>
+ </div>
 </body>
 </html>
+
 
