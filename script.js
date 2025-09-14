@@ -1,7 +1,3 @@
-import * as THREE from 'https://unpkg.com/three@0.155.0/build/three.module.js';
-import { OrbitControls } from 'https://unpkg.com/three@0.155.0/examples/jsm/controls/OrbitControls.js';
-import { GLTFLoader } from 'https://unpkg.com/three@0.155.0/examples/jsm/loaders/GLTFLoader.js';
-
 let scene, camera, renderer, controls;
 
 function init() {
@@ -15,6 +11,7 @@ function init() {
   renderer.setSize(window.innerWidth, window.innerHeight);
   document.getElementById("viewer").appendChild(renderer.domElement);
 
+  // Lights
   const light = new THREE.HemisphereLight(0xffffff, 0x444444, 1.2);
   scene.add(light);
 
@@ -23,13 +20,13 @@ function init() {
   scene.add(dirLight);
 
   // Controls
-  controls = new OrbitControls(camera, renderer.domElement);
+  controls = new THREE.OrbitControls(camera, renderer.domElement);
   controls.enableDamping = true;
   controls.enablePan = true;
   controls.enableZoom = true;
 
-  // Load model
-  const loader = new GLTFLoader();
+  // Load 3D Model
+  const loader = new THREE.GLTFLoader();
   loader.load('model/moss_sword.glb', function(gltf) {
     scene.add(gltf.scene);
   }, undefined, function(error){
