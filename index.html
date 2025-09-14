@@ -4,48 +4,44 @@
   <meta charset="UTF-8">
   <title>Twitch 3D Viewer</title>
   <link rel="stylesheet" href="style.css">
-  <!-- Model Viewer library -->
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 </head>
 <body>
- <div id="panel-container">
-  <!-- The 3D model -->
-  <model-viewer 
-      src="model/moss_sword.glb"
-      alt="3D Model"
-      auto-rotate
-      camera-controls
-      min-camera-orbit="1.5m 0deg 0deg"
-      max-camera-orbit="13m 360deg 90deg"
-      style="width: 100%; height: 100%; background-color: #18181b;">
-  </model-viewer>
-    
-  <!-- Overlay -->
-  <div id="overlay">
-    <div id="overlay-text">Follow to unlock</div>
+  <div id="panel-container">
+    <!-- The 3D model -->
+    <model-viewer 
+        id="viewer"
+        src="model/moss_sword.glb"
+        alt="3D Model"
+        auto-rotate
+        camera-controls
+        min-camera-orbit="1.5m 0deg 0deg"
+        max-camera-orbit="13m 360deg 90deg"
+        style="width: 100%; height: 100%; background-color: #18181b;">
+    </model-viewer>
+
+    <!-- Blur overlay -->
+    <div id="overlay">
+      <div id="overlay-text">Follow to unlock</div>
+    </div>
   </div>
- </div>
 
- <!-- JS for overlay -->
- <script>
-   // Twitch extension helper
-   if (window.Twitch && window.Twitch.ext) {
-     Twitch.ext.onAuthorized((auth) => {
-       // Replace this with a backend call to check if the user is a follower
-       userIsFollower().then(isFollower => {
-         if (isFollower) {
-           document.getElementById('overlay').style.display = 'none';
-         }
-       });
-     });
-   }
+  <script>
+    // Twitch extension helper
+    if (window.Twitch && window.Twitch.ext) {
+      Twitch.ext.onAuthorized((auth) => {
+        userIsFollower().then(isFollower => {
+          if (isFollower) {
+            document.getElementById('overlay').style.display = 'none';
+          }
+        });
+      });
+    }
 
-   // Demo function for testing
-   async function userIsFollower() {
-     return true; // change to true to test hiding overlay
-   }
- </script>
+    // Demo function for testing
+    async function userIsFollower() {
+      return false; // change to true to test
+    }
+  </script>
 </body>
 </html>
-
-
