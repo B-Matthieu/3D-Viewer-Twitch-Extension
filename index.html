@@ -2,16 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Twitch 3D Extension</title>
+  <title>Twitch 3D Viewer</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div id="viewer"></div>
 
-  <!-- Twitch Extension Helper -->
-  <script src="https://extension-files.twitch.tv/helper/v1/twitch-ext.min.js"></script>
-  
-  <!-- Our script now uses ES modules -->
-  <script type="module" src="script.js"></script>
+  <!-- Three.js UMD build -->
+  <script src="https://unpkg.com/three@0.150.1/build/three.min.js"></script>
+  <!-- OrbitControls UMD -->
+  <script src="https://unpkg.com/three@0.150.1/examples/js/controls/OrbitControls.js"></script>
+  <!-- GLTFLoader UMD -->
+  <script src="https://unpkg.com/three@0.150.1/examples/js/loaders/GLTFLoader.js"></script>
+
+  <script src="script.js"></script>
 </body>
 </html>
