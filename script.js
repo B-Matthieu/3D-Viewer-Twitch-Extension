@@ -38,7 +38,7 @@ function init() {
   // Load 3D Model
   const loader = new GLTFLoader();
   loader.load(
-    "model/mymodel.glb",
+    "model/moss_sword.glb",
     (gltf) => {
       scene.add(gltf.scene);
     },
@@ -64,3 +64,4 @@ window.addEventListener("resize", () => {
 });
 
 init();
+
